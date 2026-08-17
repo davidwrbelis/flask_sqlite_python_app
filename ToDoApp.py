@@ -10,7 +10,7 @@ app = Flask(__name__)    #creat Flask application.   app is our container object
 print('app name -', app);print() #app name - <Flask 'flasktutorial'>
 
 app.config['SECRET_KEY'] = 'my_secret_key'
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///to_do_list.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////home/ec2-user/flask_sqlite_python_app/instance/to_do_list.db"
 db.init_app(app) #pass in URI of the database
 
 login_manager = LoginManager()
