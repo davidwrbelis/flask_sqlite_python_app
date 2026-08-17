@@ -1,0 +1,17 @@
+{%extends 'base_template.html'%}
+{% block head %} 
+    <title>Flask Tutorial HTML Tester</title>
+{% endblock %} 
+
+{% block body %} 
+
+<div>
+    <h1>Edit Task</h1>  <!--where are we going to get the id from -->
+    <form action="/update/{{tasks.id}}" method="POST">                        
+        <input type="text" style="width: 400px;" name="content" id="content" value="{{ tasks.content }}"/> 
+        <input type="submit" value="Update Task" id="btn_update"/>
+    </form>
+</div>
+
+
+{% endblock %}

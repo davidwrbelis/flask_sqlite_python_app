@@ -1,0 +1,38 @@
+{%extends 'base_template.html'%}
+{% block head %} 
+    <title>Flask Tutorial HTML Tester</title>
+{% endblock %} 
+
+{% block body %}  
+    <div class="content">
+        <h1>Dave's TODO List</h1><a href="{{ url_for('logout') }}" class="logout-btn">Log Out</a>
+        {% if tasks | length < 1 %}  <!--condition that determines what will be incldued in the HTML rendered document -->
+        <h1>There are no tasks.  Create one hear with the input box...</h1>
+        {% else %}
+        <table>
+            <tr>
+            <th>Task</th>
+            <th>Added</th>
+            <th>Actions</th>  
+            {% for task in tasks %} 
+            </tr>
+            <tr>
+            <td>{{ task.content }}</td>
+            <td>{{ task.created.strftime("%Y-%m-%d") }}</td>
+            <td>     <!-- flask reads the href request to go to delete function -->
+             <a href="/delete/{{ task.id }}" class="button-link">Delete</a> <!-- we will need to send the id back to the python script -->
+             <br/><br/>
+             <a href="/update/{{ task.id }}" class="button-link">Update</a> 
+            </td> 
+            </tr> 
+            {% endfor %}                              
+        </table>
+        {% endif %} 
+        <form action="/" method="POST">
+            <br/>
+            <input type="text"   style="width: 400px;" name="content" id="content"/>
+            <input type="submit" value="Add Task"        id="btn_add"/>
+        </form>
+    </div>
+
+{% endblock %}
